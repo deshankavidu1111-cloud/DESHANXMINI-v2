@@ -1,0 +1,44 @@
+{
+  "name": "deshanxmini",
+  "version": "2.0.0",
+  "description": "DESHANxMini WhatsApp Bot powered by CHAMA MOD Framework (Baileys v7 Modified & VoIP Streaming)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "cd frontend && npm install --include=dev && npm run build",
+    "heroku-postbuild": "cd frontend && npm install --include=dev && npm run build",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "axios": "^1.7.2",
+    "chama-mod-framework": "github:chamanemax02/chama-mod-framework",
+    "express": "^4.19.2",
+    "fluent-ffmpeg": "^2.1.3",
+    "fs-extra": "^11.2.0",
+    "jimp": "^1.6.1",
+    "libsignal": "npm:libsignal-node@^2.0.1",
+    "moment-timezone": "^0.5.45",
+    "mongoose": "^8.4.1",
+    "node-cache": "^5.1.2",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "yt-search": "^2.13.1"
+  },
+  "engines": {
+    "node": ">=20.x"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "chama-mod-framework",
+    "baileys-v7",
+    "multi-device",
+    "chama-shield",
+    "voip-video-streaming",
+    "native-flow",
+    "interactive-messages"
+  ],
+  "author": "CHAMA OFC",
+  "license": "MIT"
+}
