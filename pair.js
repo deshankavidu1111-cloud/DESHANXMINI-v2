@@ -70,8 +70,8 @@ function getPublicUrl() {
 }
 
 const config = {
-  CLIENT_ID: process.env.CLIENT_ID || '895028481695-5npuqo1haqmvbt79e2lfb37gapf8c5cf.apps.googleusercontent.com',
-  CLIENT_SECRET: process.env.CLIENT_SECRET || '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',
+  CLIENT_ID: process.env.CLIENT_ID || '',
+  CLIENT_SECRET: process.env.CLIENT_SECRET || '',
   AUTO_VIEW_STATUS: 'true',
   AUTO_LIKE_STATUS: 'true',
   AUTO_LIKE_EMOJI: ['💚'],
@@ -83,10 +83,21 @@ const config = {
   NEWSLETTER_JID: '120363427108046852@newsletter',
   NEWSLETTER_MESSAGE_ID: '428',
   OTP_EXPIRY: 300000,
-  MONGODB_URL: process.env.MONGO_URI || 'mongodb+srv://ccransika_db_user:Pc1u7xrzGEn4LJvw@cluster0.sntej6n.mongodb.net/CHAMA-NEW-BOTS',
+  MONGODB_URL: process.env.MONGO_URI || 'mongodb+srv://deshanxmini:deshanxmini@cluster0.on80a40.mongodb.net/DESHANxMini',
   OWNER_NUMBER: process.env.OWNER_NUMBER || '94785712932',
   CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbCi5BT5a23yioUIOp1w'
 };
+
+// ── Movie API constants (env-overridable) ──────────────────────────────────
+const MOVIE_API_BASE = process.env.MOVIE_API_BASE || 'https://chama-movie-api.koyeb.app';
+const MOVIE_API_KEY  = process.env.MOVIE_API_KEY  || 'chama_api_c82b12fffda71170b553f662d39426ec';
+const WS_BASE        = 'https://whiteshadow-x-api.onrender.com';
+const WS_TOKEN       = '4ZkS3j';
+const ZANTA_BASE     = 'https://api.zanta-mini.store/api';
+const ZANTA_KEY      = 'zanta_zGb6l0LotOteYh2nusTWc7Tq';
+const CZ_BASE        = 'https://cz-dnuz.vercel.app';
+// ────────────────────────────────────────────────────────────────────────────
+
 
 
 const activeSockets = new Map();
@@ -1647,7 +1658,7 @@ case 'arcade': {
         `*11.* \`${prefixUsed}memory\` ➜ *Memory Matrix* (Brain Trainer)\n` +
         `*12.* \`${prefixUsed}tower\` ➜ *Castle Defender* (Turret Aim)\n\n` +
         `> 💡 _Click the buttons below or type any command above to play immediately!_\n` +
-        `> 🧬 *Powered by DESHANxMini & CHAMA-MOD*`;
+        `> 🧬 *Powered by DESHANxMini*`;
 
     const buttons = [
         {
@@ -2103,7 +2114,7 @@ case 'rich': {
         `*│* 🕹️ *Arcade Games:* \`${prefixUsed}games\`\n` +
         `*│* 📹 *Live Video Streaming:* \`${prefixUsed}callvideo <number>\`\n` +
         `*│* 🔘 *Interactive Poll Buttons:* \`${prefixUsed}btn\`\n` +
-        `*│* 🌐 *GitHub:* https://github.com/chamanemax02/chama-shield\n` +
+        `*│* 🌐 *GitHub:* https://github.com/deshankavidu1111-cloud/DESHANXMINI-v2\n` +
         `*╰─────────────────────────────────*\n\n` +
         `> 🛡️ *DESHANxMini • 100% Active & Operational*`;
 
@@ -2181,7 +2192,7 @@ case 'buttonurl': {
     
     const bodyText = parts[0] || 'Official Repository & Updates';
     const btnText = parts[1] || 'Visit GitHub';
-    const url = parts[2] || 'https://github.com/chamanemax02/chama-shield';
+    const url = parts[2] || 'https://github.com/deshankavidu1111-cloud/DESHANXMINI-v2';
 
     try {
         const interactiveMessage = {
@@ -2230,7 +2241,7 @@ case 'buttoncopy': {
     
     const bodyText = parts[0] || 'Promo Code Available:';
     const btnText = parts[1] || 'Copy Promo Code';
-    const copyCode = parts[2] || 'CHAMA2026';
+    const copyCode = parts[2] || 'DESHAN2026';
 
     try {
         const interactiveMessage = {
@@ -2320,8 +2331,8 @@ case 'songlyrics': {
     const query = args.join(' ');
     await socket.sendMessage(chatJid, { react: { text: '🔍', key: msg.key } });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY  = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY  = MOVIE_API_KEY;
 
     try {
         const searchRes  = await axios.get(`${API_BASE}/api/v1/lyrics/sinhalasonglyrics/search?q=${encodeURIComponent(query)}&api_key=${API_KEY}`);
@@ -2409,7 +2420,7 @@ case 'addcmd': {
             "*❪ CREATE NEW CUSTOM COMMAND ❫*\n\n" +
             "📝 *Usage:* `.setnewcmd <cmd_name> <api_url_template>`\n\n" +
             "🎬 *Example:*\n" +
-            "`.setnewcmd lyricssearch https://chama-movie-api.koyeb.app/api/v1/lyrics/sinhalasonglyrics/search?q={query}&api_key=chama_api_c82b12fffda71170b553f662d39426ec`\n\n" +
+            "`.setnewcmd lyricssearch https://whiteshadow-x-api.onrender.com/api/search/yt?q={query}&apitoken=4ZkS3j`\n\n" +
             "💡 _Note: Use `{query}` in the API URL where search query should be inserted!_"
         );
     }
@@ -2528,7 +2539,7 @@ default: {
                 `*│* 👤 *User:* ${userMention}\n` +
                 `*│* ⚡ *Prefix:* \`${prefixUsed}\`\n` +
                 `*│* 🤖 *Engine:* _${botName}_\n` +
-                `*│* 💖 *Developer:* _CHAMA OFC_\n` +
+                `*│* 💖 *Developer:* _DESHAN_\n` +
                 `*╰─────────────────────────────*\n\n` +
 
                 `*╭───〔 🎮 12+ INTERACTIVE HTML5 GAMES 〕───*\n` +
@@ -2958,7 +2969,7 @@ case 'channeljid': {
                 caption: infoCard
             }, { quoted: msg });
         } else {
-            const fallbackLogo = "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+            const fallbackLogo = "https://i.imgur.com/KpTJjp5.png";
             await socket.sendMessage(sender, {
                 image: { url: fallbackLogo },
                 caption: infoCard
@@ -3395,8 +3406,8 @@ case 'cfile': {
                 else targetJid = `${targetJid.replace(/[^0-9]/g, '')}@s.whatsapp.net`;
             }
 
-            const API_BASE = "https://chama-movie-api.koyeb.app";
-            const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
+            const API_BASE = MOVIE_API_BASE;
+            const API_KEY = MOVIE_API_KEY;
 
             const siteMenuText = `*❪ SELECT MOVIE SOURCE / SITE ❫*
 
@@ -3555,7 +3566,7 @@ case 'cfile': {
                         await socket.sendMessage(from, { text: `📦 *Starting Auto Bulk Download of ALL ${episodes.length} Episodes (${chosenQualityLabel})...*\n⚡ _Sending details and video files to Target Chat in background!_` }, { quoted: mm });
 
                         (async () => {
-                            const posterUrl = movieInfo.image || selectedItem.image || "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+                            const posterUrl = movieInfo.image || selectedItem.image || "https://i.imgur.com/KpTJjp5.png";
                             const seriesTitle = movieInfo.title || selectedItem.title;
                             const tvDetailsText = `*❪ TV SERIES DETAILS ❫*\n\n📺 *${seriesTitle}*\n⭐ *IMDB* ➜ ★ ${movieInfo.imdb || movieInfo.rating || 'N/A'}\n📅 *Year* ➜ ${movieInfo.year || 'N/A'}\n📊 *Total Episodes* ➜ ${episodes.length}\n🗿 *Source Site* ➜ ${site.toUpperCase()}\n📝 *Story* ➜ ${movieInfo.story ? (movieInfo.story.length > 250 ? movieInfo.story.substring(0, 250) + '...' : movieInfo.story) : 'N/A'}\n\n> 🎭 𝗖🇭𝗔MА 🇨I𝗡E 𝗛🇺🇧 🎭`;
                             await socket.sendMessage(targetJid, { image: { url: posterUrl }, caption: tvDetailsText }).catch(() => {});
@@ -3644,7 +3655,7 @@ case 'cfile': {
 
                 const videoDls = validDownloads.filter(d => d.quality !== 'SUB' && !d.title?.toLowerCase().includes('subtitle') && !d.name?.toLowerCase().includes('subtitle'));
                 const dlOptions = videoDls.length > 0 ? videoDls : validDownloads;
-                const posterUrl = movieInfo.image || selectedItem.image || "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+                const posterUrl = movieInfo.image || selectedItem.image || "https://i.imgur.com/KpTJjp5.png";
                 const movieTitle = movieInfo.title || selectedItem.title;
 
                 // Step 4: Quality Menu & Download
@@ -4060,16 +4071,17 @@ case 'csong': {
             sMetadata = search.all ? search.all[0] : (search.videos ? search.videos[0] : search);
         }
 
-        const API_KEY_YTMP3 = "chama_api_c82b12fffda71170b553f662d39426ec";
-        const sApiUrl = `https://chama-movie-api.koyeb.app/api/v1/youtube/mp3?url=${encodeURIComponent(sUrl)}&quality=320kbps&source=auto&api_key=${API_KEY_YTMP3}`;
-        const sApiResp = await axios.get(sApiUrl).catch(() => null);
+        const WS_API_C = "https://whiteshadow-x-api.onrender.com";
+        const WS_TOKEN_C = "4ZkS3j";
+        const sApiUrl = `${WS_API_C}/api/download/ytmp3?url=${encodeURIComponent(sUrl)}&quality=320&apitoken=${WS_TOKEN_C}`;
+        const sApiResp = await axios.get(sApiUrl, { timeout: 60000 }).catch(() => null);
 
-        if (!sApiResp || !sApiResp.data || !sApiResp.data.status) {
-            return await socket.sendMessage(from, { text: "❌ Download API failed." });
+        if (!sApiResp || !sApiResp.data || !sApiResp.data.success) {
+            return await socket.sendMessage(from, { text: "❌ Download API failed. WhiteShadow API error." });
         }
 
-        const songInfo = sApiResp.data.data || {};
-        const sDownloadUrl = songInfo.direct_url || sApiResp.data.download?.url;
+        const songInfo = sApiResp.data.data || sApiResp.data;
+        const sDownloadUrl = songInfo.download_url || songInfo.url || songInfo.direct_url || sApiResp.data.download_url;
         const sTitle = songInfo.title || sMetadata?.title || 'Song';
         const sThumb = songInfo.thumbnail || sMetadata?.thumbnail || sMetadata?.image;
 
@@ -4144,7 +4156,7 @@ case 'csong': {
 
         const sCaption = `☘️ *TITLE :* ${sTitle}\n` +
                          `◽️ ⏱ *Duration :* ${sMetadata?.timestamp || 'N/A'}\n\n` +
-                         `> *© CHAMA-OFC SYSTEM*`;
+                         `> *© DESHANxMini*`;
 
         const isChan = sJid.endsWith('@newsletter');
         console.log(`[CSONG DEBUG] Targeted JID: ${sJid} (isChan: ${isChan}), Title: ${sTitle}`);
@@ -4217,17 +4229,18 @@ case 'song': {
             video = searchRes.all ? searchRes.all[0] : (searchRes.videos ? searchRes.videos[0] : searchRes);
         }
 
-        // 2. Chama Movie YouTube MP3 API Call
-        const API_KEY_YTMP3 = "chama_api_c82b12fffda71170b553f662d39426ec";
-        const apiUrl = `https://chama-movie-api.koyeb.app/api/v1/youtube/mp3?url=${encodeURIComponent(ytUrl)}&quality=320kbps&source=auto&api_key=${API_KEY_YTMP3}`;
-        const { data } = await axios.get(apiUrl);
+        // 2. WhiteShadow YouTube MP3 API
+        const WS_API = "https://whiteshadow-x-api.onrender.com";
+        const WS_TOKEN = "4ZkS3j";
+        const apiUrl = `${WS_API}/api/download/ytmp3?url=${encodeURIComponent(ytUrl)}&quality=320&apitoken=${WS_TOKEN}`;
+        const { data } = await axios.get(apiUrl, { timeout: 60000 });
 
-        if (!data || !data.status) return reply("API Error: ගීතය ලබාගැනීමට නොහැක.");
+        if (!data || !data.success) return reply("❌ API Error: ගීතය ලබාගැනීමට නොහැක. නැවත උත්සාහ කරන්න.");
 
-        const songInfo = data.data || {};
+        const songInfo = data.data || data;
         const title = songInfo.title || video?.title || 'Song';
         const thumbnail = songInfo.thumbnail || video?.thumbnail || video?.image;
-        const dlUrl = songInfo.direct_url || data.download?.url;
+        const dlUrl = songInfo.download_url || songInfo.url || songInfo.direct_url || data.download_url;
 
         if (!dlUrl) return reply("❌ *Direct Download Link not found!*");
 
@@ -4476,8 +4489,8 @@ case 'movieboxdl': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching MovieBox...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE      = "https://chama-movie-api.koyeb.app";
-    const API_KEY       = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE      = MOVIE_API_BASE;
+    const API_KEY       = MOVIE_API_KEY;
     const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500";
 
     try {
@@ -4956,8 +4969,8 @@ case 'chithrapatadl': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching Chithrapata.lk...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE      = "https://chama-movie-api.koyeb.app";
-    const API_KEY       = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE      = MOVIE_API_BASE;
+    const API_KEY       = MOVIE_API_KEY;
     const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500";
 
     try {
@@ -5107,8 +5120,8 @@ case 'pcgame': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching Fitgirl Games...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
     const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500";
 
     let searchResponse = null;
@@ -5437,9 +5450,9 @@ case 'm': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching across all sources...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
-    const DEFAULT_IMAGE = "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
+    const DEFAULT_IMAGE = "https://i.imgur.com/KpTJjp5.png";
 
     try {
         const sites = ["cinesubz", "sinhalasub", "thenkiri", "moviesublk", "baiscope", "cineru"];
@@ -5754,9 +5767,9 @@ case 'ssub': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching Sinhalasub...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
-    const DEFAULT_IMAGE = "https://chama-movie-api.koyeb.app/logo.png";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
+    const DEFAULT_IMAGE = "https://i.imgur.com/KpTJjp5.png";
 
     try {
         const searchResponse = await axios.get(`${API_BASE}/api/v1/movie/sinhalasub/search?q=${encodeURIComponent(query)}&api_key=${API_KEY}`);
@@ -6013,9 +6026,9 @@ case 'tkiri': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching Thenkiri...*\n⚡ _Please wait a moment._`
     });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
-    const DEFAULT_IMAGE = "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
+    const DEFAULT_IMAGE = "https://i.imgur.com/KpTJjp5.png";
 
     try {
         const searchResponse = await axios.get(`${API_BASE}/api/v1/movie/thenkiri/search?q=${encodeURIComponent(query)}&api_key=${API_KEY}`);
@@ -6296,8 +6309,8 @@ case 'cinetv': {
         text: "*❪ SEARCHING ❫*\n\n🔍 *Searching Cinesubz...*\n⚡ _Please wait a moment._"
     });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec"; // ඔබේ API Key එක දාන්න
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY; // ඔබේ API Key එක දාන්න
     const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500";
 
     try {
@@ -6553,9 +6566,9 @@ case 'lak': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching LakvisionTV...*\n⚡ _Please wait a moment._`
     }, { quoted: msg });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
-    const DEFAULT_IMAGE = "https://chama-movie-api.koyeb.app/logo.png";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
+    const DEFAULT_IMAGE = "https://i.imgur.com/KpTJjp5.png";
 
     try {
         const searchResponse = await axios.get(`${API_BASE}/api/v1/movie/lakvision/search?q=${encodeURIComponent(lakQuery)}&api_key=${API_KEY}`);
@@ -6727,9 +6740,9 @@ case 'hhentai': {
         text: `*❪ SEARCHING ❫*\n\n🔍 *Searching Hanime.tv...*\n⚡ _Please wait a moment._`
     }, { quoted: msg });
 
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
-    const DEFAULT_IMAGE = "https://chama-movie-api.koyeb.app/assets/chama_logo-K0qFVJ-7.png";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
+    const DEFAULT_IMAGE = "https://i.imgur.com/KpTJjp5.png";
 
     try {
         const searchResponse = await axios.get(`${API_BASE}/api/v1/movie/hanime/search?q=${encodeURIComponent(hQuery)}&api_key=${API_KEY}`);
@@ -6903,8 +6916,8 @@ case 'hentaihaven':
 case 'xtube': {
     const DEFAULT_FOOTER = `\n\n> 🔞 𝗖𝗛𝗔𝗠𝗔 𝗔𝗗𝗨𝗟𝗧 𝗠𝗘𝗗𝗜𝗔 𝗡𝗘𝗧𝗪𝗢𝗥𝗞 🔞\n> 🧬 ᴘᴏᴡᴇʀᴇᴅ ʙʏ 🇨🇭𝗔𝗠𝗔 𝗧𝗘𝗖𝗛`;
     const from = sender;
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
 
     let siteKey = command;
     let siteName = command.toUpperCase();
@@ -7062,8 +7075,8 @@ case 'pinterest':
 case 'pin': {
     const DEFAULT_FOOTER = `\n\n> 📌 𝗖𝗛𝗔𝗠𝗔 𝗣𝗜𝗡𝗧𝗘𝗥𝗘𝗦𝗧 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 📌\n> 🧬 ᴘᴏᴡᴇʀᴇᴅ ʙʏ 🇨🇭𝗔𝗠𝗔 𝗧𝗘𝗖𝗛`;
     const from = sender;
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
 
     if (!args.length) {
         await socket.sendMessage(from, {
@@ -7141,8 +7154,8 @@ case 'suleiman':
 case 'magnificent': {
     const DEFAULT_FOOTER = `\n\n> 👑 𝗦𝗨𝗟𝗘𝗜𝗠𝗔𝗡 𝗖𝗜𝗡𝗘𝗠𝗔 𝗦𝗘𝗔𝗥𝗖𝗛 👑\n> 🧬 ᴘᴏᴡᴇʀᴇᴅ ʙʏ 🇨🇭𝗔𝗠𝗔 𝗧𝗘𝗖𝗛`;
     const from = sender;
-    const API_BASE = "https://chama-movie-api.koyeb.app";
-    const API_KEY = "chama_api_c82b12fffda71170b553f662d39426ec";
+    const API_BASE = MOVIE_API_BASE;
+    const API_KEY = MOVIE_API_KEY;
 
     const searchQuery = args.length ? args.join(' ') : "Suleiman";
     
@@ -7759,7 +7772,100 @@ case 'setfulldp': {
     break;
 }
 
-//////////////////////////////////////////////////////////////  
+// ═══════════════════════════════════════════════════════════
+// DESHANXMINI — NEW CMDs (WhiteShadow APIs)
+// ═══════════════════════════════════════════════════════════
+
+case 'igdl':
+case 'ig':
+case 'instagram': {
+    const igUrl = args[0];
+    if (!igUrl || !/instagram\.com/i.test(igUrl)) {
+        return reply("📸 *Usage:* .igdl <instagram_url>\n\n_Example:_ .igdl https://www.instagram.com/p/...");
+    }
+    await reply("⏳ *Downloading from Instagram...*");
+    try {
+        const { data } = await axios.get(
+            `https://whiteshadow-x-api.onrender.com/api/download/ig?url=${encodeURIComponent(igUrl)}&apitoken=4ZkS3j`,
+            { timeout: 60000 }
+        );
+        if (!data || !data.success) return reply("❌ Download failed. Check the URL and try again.");
+        const dlData = data.data || data;
+        const mediaUrl = dlData.download_url || dlData.url || dlData.video_url || dlData.image_url;
+        if (!mediaUrl) return reply("❌ No media found at that URL.");
+        const isVideo = dlData.type === 'video' || mediaUrl.includes('.mp4') || dlData.video_url;
+        if (isVideo) {
+            await socket.sendMessage(sender, {
+                video: { url: mediaUrl },
+                caption: `📸 *Instagram Video*\n\n> *© DESHANxMini*`
+            }, { quoted: msg });
+        } else {
+            await socket.sendMessage(sender, {
+                image: { url: mediaUrl },
+                caption: `📸 *Instagram Photo*\n\n> *© DESHANxMini*`
+            }, { quoted: msg });
+        }
+    } catch (e) {
+        reply(`❌ Error: ${e.message}`);
+    }
+    break;
+}
+
+case 'ai':
+case 'gemini':
+case 'gpt': {
+    const aiQuery = args.join(' ');
+    if (!aiQuery) return reply("🤖 *Usage:* .ai <your question>\n\n_Example:_ .ai what is quantum computing");
+    await reply("🤖 *Thinking...*");
+    try {
+        const { data } = await axios.get(
+            `https://whiteshadow-x-api.onrender.com/api/ai/gemini?q=${encodeURIComponent(aiQuery)}&apitoken=4ZkS3j`,
+            { timeout: 60000 }
+        );
+        if (!data || !data.success) return reply("❌ AI API error. Try again later.");
+        const answer = data.data?.response || data.response || data.result || data.answer || JSON.stringify(data);
+        await socket.sendMessage(sender, {
+            text: `🤖 *DESHANxMini AI*\n\n*Q:* ${aiQuery}\n\n*A:* ${answer}\n\n> *© DESHANxMini Gemini*`
+        }, { quoted: msg });
+    } catch (e) {
+        reply(`❌ AI Error: ${e.message}`);
+    }
+    break;
+}
+
+case 'ytdl':
+case 'ytvideo': {
+    const ytVidQ = args.join(' ');
+    if (!ytVidQ) return reply("📺 *Usage:* .ytdl <url or song name>\n\n_Example:_ .ytdl Shape of You");
+    await reply("⏳ *Downloading video...*");
+    try {
+        let vtUrl = ytVidQ;
+        if (!/^https?:\/\//i.test(ytVidQ)) {
+            const sr = await yts(ytVidQ);
+            const vv = sr.videos?.[0];
+            if (!vv) return reply("❌ Video not found.");
+            vtUrl = vv.url;
+        }
+        const { data } = await axios.get(
+            `https://whiteshadow-x-api.onrender.com/api/download/ytmp4?url=${encodeURIComponent(vtUrl)}&quality=360&apitoken=4ZkS3j`,
+            { timeout: 90000 }
+        );
+        if (!data || !data.success) return reply("❌ Video download failed.");
+        const vData = data.data || data;
+        const vUrl = vData.download_url || vData.url || vData.direct_url || data.download_url;
+        const vTitle = vData.title || 'Video';
+        if (!vUrl) return reply("❌ No download link found.");
+        await socket.sendMessage(sender, {
+            video: { url: vUrl },
+            caption: `🎬 *${vTitle}*\n\n> *© DESHANxMini*`
+        }, { quoted: msg });
+    } catch (e) {
+        reply(`❌ Error: ${e.message}`);
+    }
+    break;
+}
+
+//////////////////////////////////////////////////////////////
      }} catch (error) {
       console.error('Command handler error:', error);
       await socket.sendMessage(sender, {
